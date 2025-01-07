@@ -1,7 +1,7 @@
 pydub
 flask
 openai
-rapidjson
+python-rapidjson
 python-telegram-bot
 requests
 notion-client
