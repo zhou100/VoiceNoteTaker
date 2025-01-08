@@ -7,6 +7,7 @@ import os
 from dotenv import load_dotenv
 from pydub import AudioSegment
 from openai import OpenAI
+import httpx
 import traceback
 import sys
 import time
