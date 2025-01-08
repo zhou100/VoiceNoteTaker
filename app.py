@@ -28,7 +28,13 @@ auth = HTTPBasicAuth()
 setup_logging(app)
 
 # Configure OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY"),
+    http_client=None,
+    proxies=None,
+    transport=None
+)
+
 if not client.api_key or client.api_key == "your_openai_api_key":
     app.logger.error("OpenAI API key not found. Please set OPENAI_API_KEY in .env file")
 
@@ -41,67 +47,58 @@ limiter = Limiter(
     key_func=get_auth_username,  # Rate limit by authenticated username or IP
     app=app,
     default_limits=["200 per day", "50 per hour"],  # Global limits
-    storage_uri="memory://"  # Use in-memory storage (change to redis:// for production)
 )
 
-# In production, use a proper user database
-users = {
-    os.getenv("API_USERNAME", "admin"): generate_password_hash(os.getenv("API_PASSWORD", "change_me_in_production"))
-}
-
+# Decorator to monitor API calls
 def monitor_api_call(endpoint_name):
-    """Decorator to monitor API calls"""
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
-            # Generate request ID and store it in g and request
-            request_id = get_request_id()
-            g.request_id = request_id
-            request.request_id = request_id
-            
-            app.logger.info(f"[{request_id}] Starting {endpoint_name} request")
-            
+            g.request_id = get_request_id()
+            app.logger.info(f"[{g.request_id}] Starting {endpoint_name} request")
             start_time = time.time()
+            
             try:
                 response = f(*args, **kwargs)
-                duration_ms = (time.time() - start_time) * 1000
+                duration = time.time() - start_time
                 
-                # Handle tuple response (response, status_code)
-                if isinstance(response, tuple):
-                    status_code = response[1]
-                    response_obj = response[0]
-                else:
-                    status_code = 200
-                    response_obj = response
-                
-                log_api_call(endpoint_name, duration_ms, (response_obj, status_code))
+                # Log the API call completion
+                status_code = response[1] if isinstance(response, tuple) else 200
+                app.logger.info(
+                    f"[{g.request_id}] Completed {endpoint_name} request. "
+                    f"Duration: {duration:.2f}s, Status: {status_code}"
+                )
                 return response
+            
             except Exception as e:
-                duration_ms = (time.time() - start_time) * 1000
-                error_response = jsonify({"error": str(e)})
-                log_api_call(endpoint_name, duration_ms, (error_response, 500))
-                app.logger.error(f"[{request_id}] Error in {endpoint_name}: {str(e)}\n{traceback.format_exc()}")
-                return error_response, 500
+                duration = time.time() - start_time
+                app.logger.error(
+                    f"[{g.request_id}] Error in {endpoint_name} request. "
+                    f"Duration: {duration:.2f}s\n{traceback.format_exc()}"
+                )
+                raise
+            
         return decorated_function
     return decorator
 
 @auth.verify_password
 def verify_password(username, password):
-    if username in users and check_password_hash(users.get(username), password):
+    if username == os.getenv("API_USERNAME") and password == os.getenv("API_PASSWORD"):
         return username
     return None
 
-@app.route('/')
-@limiter.exempt  # No rate limit for index page
-@monitor_api_call('index')
+@app.route("/")
+@auth.login_required
 def index():
-    return jsonify({"message": "Welcome to Voice Note Taker API", 
-                   "endpoints": {
-                       "/api/v1/transcribe": "POST - Upload audio file for transcription",
-                       "/api/v1/paraphrase": "POST - Paraphrase text"
-                   }}), 200
+    return jsonify({
+        "message": "Welcome to Voice Note Taker API",
+        "endpoints": {
+            "/api/v1/transcribe": "POST - Upload audio file for transcription",
+            "/api/v1/paraphrase": "POST - Paraphrase text"
+        }
+    })
 
-@app.route('/api/v1/transcribe', methods=['POST'])
+@app.route("/api/v1/transcribe", methods=["POST"])
 @auth.login_required
 @limiter.limit("10 per minute")  # Stricter limit for resource-intensive endpoint
 @monitor_api_call('transcribe')
@@ -110,31 +107,29 @@ def transcribe():
         app.logger.error(f"[{g.request_id}] OpenAI API key not configured")
         return jsonify({"error": "OpenAI API key not configured. Please set OPENAI_API_KEY in .env file"}), 500
 
-    if 'file' not in request.files:
-        app.logger.warning(f"[{g.request_id}] No file provided in request")
-        return jsonify({"error": "No file provided"}), 400
+    if "file" not in request.files:
+        app.logger.error(f"[{g.request_id}] No file part in request")
+        return jsonify({"error": "No file part"}), 400
     
-    file = request.files['file']
-    if file.filename == '':
-        app.logger.warning(f"[{g.request_id}] Empty filename provided")
-        return jsonify({"error": "No file selected"}), 400
+    file = request.files["file"]
+    if file.filename == "":
+        app.logger.error(f"[{g.request_id}] No selected file")
+        return jsonify({"error": "No selected file"}), 400
 
     try:
-        # Save the uploaded file temporarily
-        temp_path = os.path.join(TEMP_DIR, "temp_audio")
+        # Generate a unique filename
+        temp_path = os.path.join(TEMP_DIR, f"temp_{g.request_id}")
+        
+        # Save the uploaded file
         file.save(temp_path)
-        app.logger.info(f"[{g.request_id}] Saved temporary file: {temp_path}")
+        app.logger.info(f"[{g.request_id}] File saved to {temp_path}")
         
         try:
-            # Convert audio to format compatible with OpenAI's Whisper
+            # Convert to mp3 (required by Whisper API)
             audio = AudioSegment.from_file(temp_path)
             audio.export(temp_path + ".mp3", format="mp3")
-            app.logger.info(f"[{g.request_id}] Successfully converted audio to MP3")
-        except Exception as e:
-            app.logger.error(f"[{g.request_id}] Error converting audio: {str(e)}\n{traceback.format_exc()}")
-            return jsonify({"error": "Error converting audio file. Make sure it's a valid audio format"}), 500
-        
-        try:
+            app.logger.info(f"[{g.request_id}] File converted to MP3")
+            
             # Transcribe using OpenAI's Whisper API
             with open(temp_path + ".mp3", "rb") as audio_file:
                 app.logger.info(f"[{g.request_id}] Starting transcription with Whisper API")
@@ -142,29 +137,24 @@ def transcribe():
                     model="whisper-1",
                     file=audio_file
                 )
-                app.logger.info(f"[{g.request_id}] Successfully transcribed audio")
-        except Exception as e:
-            app.logger.error(f"[{g.request_id}] Error transcribing with Whisper API: {str(e)}\n{traceback.format_exc()}")
-            return jsonify({"error": "Error transcribing audio with Whisper API"}), 500
-        
-        # Clean up temporary files
-        os.remove(temp_path)
-        os.remove(temp_path + ".mp3")
-        app.logger.info(f"[{g.request_id}] Cleaned up temporary files")
-        
-        return jsonify({"text": transcript.text}), 200
+                
+            app.logger.info(f"[{g.request_id}] Successfully transcribed audio")
+            return jsonify({"text": transcript.text})
+            
+        finally:
+            # Clean up temporary files
+            try:
+                os.remove(temp_path)
+                os.remove(temp_path + ".mp3")
+                app.logger.info(f"[{g.request_id}] Cleaned up temporary files")
+            except Exception as e:
+                app.logger.warning(f"[{g.request_id}] Error cleaning up files: {str(e)}")
     
     except Exception as e:
         app.logger.error(f"[{g.request_id}] Error processing audio: {str(e)}\n{traceback.format_exc()}")
-        return jsonify({"error": f"Error processing audio file: {str(e)}"}), 500
-    finally:
-        # Ensure temp files are cleaned up even if an error occurs
-        if os.path.exists(temp_path):
-            os.remove(temp_path)
-        if os.path.exists(temp_path + ".mp3"):
-            os.remove(temp_path + ".mp3")
+        return jsonify({"error": "Error processing audio file"}), 500
 
-@app.route('/api/v1/paraphrase', methods=['POST'])
+@app.route("/api/v1/paraphrase", methods=["POST"])
 @auth.login_required
 @limiter.limit("30 per minute")  # Less strict limit for text-based endpoint
 @monitor_api_call('paraphrase')
@@ -174,38 +164,34 @@ def get_paraphrase():
         return jsonify({"error": "OpenAI API key not configured"}), 500
 
     if not request.is_json:
-        app.logger.warning(f"[{g.request_id}] Invalid content type")
-        return jsonify({"error": "Content-Type must be application/json"}), 400
+        app.logger.error(f"[{g.request_id}] Request must be JSON")
+        return jsonify({"error": "Request must be JSON"}), 400
     
-    data = request.get_json()
-    text = data.get('text')
-    
+    text = request.json.get("text")
     if not text:
-        app.logger.warning(f"[{g.request_id}] No text provided in request")
-        return jsonify({"error": "No text provided in request body"}), 400
+        app.logger.error(f"[{g.request_id}] No text provided")
+        return jsonify({"error": "No text provided"}), 400
     
     try:
         app.logger.info(f"[{g.request_id}] Processing paraphrase request")
         response = client.chat.completions.create(
-            model="gpt-4o-mini",  # Using gpt-3.5-turbo for faster and cheaper processing
+            model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that paraphrases text to make it more clear and concise while preserving the original meaning."},
-                {"role": "user", "content": f"Please paraphrase the following text:\n\n{text}"}
-            ],
-            temperature=0.7,
-            max_tokens=1000
+                {"role": "user", "content": f"Please paraphrase this text: {text}"}
+            ]
         )
         
-        paraphrased_text = response.choices[0].message.content.strip()
-        app.logger.info(f"[{g.request_id}] Successfully paraphrased text")
+        app.logger.info(f"[{g.request_id}] Successfully received paraphrase response")
+        paraphrased = response.choices[0].message.content.strip()
         
         return jsonify({
             "original": text,
-            "paraphrased": paraphrased_text
-        }), 200
+            "paraphrased": paraphrased
+        })
     except Exception as e:
         app.logger.error(f"[{g.request_id}] Error paraphrasing text: {str(e)}\n{traceback.format_exc()}")
-        return jsonify({"error": f"Error processing text: {str(e)}"}), 500
+        return jsonify({"error": "Error paraphrasing text"}), 500
 
 # Error handler for rate limit exceeded
 @app.errorhandler(429)
@@ -217,11 +203,11 @@ def ratelimit_handler(e):
 @app.errorhandler(Exception)
 def handle_exception(e):
     app.logger.error(f"Unhandled exception: {str(e)}\n{traceback.format_exc()}")
-    return jsonify({"error": "An unexpected error occurred"}), 500
+    return jsonify({"error": "Internal server error"}), 500
 
 if __name__ == '__main__':
     # Print debug information
     app.logger.info(f"System PATH: {os.environ['PATH']}")
     
     # In development only
-    app.run(debug=True, host='127.0.0.1', port=5000)
+    app.run(debug=True, host="0.0.0.0", port=5000)
