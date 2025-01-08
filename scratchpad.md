@@ -208,3 +208,115 @@ curl -X POST \
 6. Always check OpenAI API key configuration before making API calls
 7. Use gpt-3.5-turbo for faster and more cost-effective processing
 8. Keep system prompts clear and focused for better results
+
+## Current Task: Implementing Paraphrase Logging System
+
+### Requirements
+- Store logs of paraphrased results for later review and summarization
+- Include timestamp, original text, and paraphrased result
+- Make logs easily accessible for future analysis
+
+### Plan
+[X] Determine appropriate log storage format and location
+    - Created paraphrase_logs.py with ParaphraseLogger class
+    - Using JSONL format for efficient storage and retrieval
+    - Logs stored in logs/paraphrase_logs.jsonl
+[X] Implement logging mechanism in the paraphrase endpoint
+    - Added paraphrase logging to app.py
+    - Each log entry includes timestamp, request_id, original text, and paraphrased text
+[X] Add functionality to retrieve and review logs
+    - Added /api/v1/paraphrase_logs endpoint with filtering options
+    - Added /api/v1/paraphrase_logs/summary endpoint for statistics
+[X] Consider adding summarization capabilities
+    - Implemented summary endpoint with statistics over time periods
+
+### Current Time Reference
+- Latest timestamp: 2025-01-08T13:26:22-08:00
+
+### Implementation Details
+1. Log Format (JSONL):
+```json
+{
+    "timestamp": "2025-01-08T13:26:22-08:00",
+    "request_id": "20250108132622-abcd1234",
+    "original_text": "original text",
+    "paraphrased_text": "paraphrased version"
+}
+```
+
+2. Storage Location:
+   - All logs stored in `logs/paraphrase_logs.jsonl`
+   - Using JSONL format for easy appending and reading
+   - Each line is a complete JSON object
+
+3. Features:
+   - Automatic log rotation and backup
+   - Time-based filtering
+   - Limit on number of logs returned
+   - UTF-8 encoding support
+
+### How to Access Logs
+1. View Raw Logs:
+   ```
+   GET /api/v1/paraphrase_logs?format=json
+   ```
+   Optional parameters:
+   - start_time: ISO format (YYYY-MM-DDTHH:MM:SS)
+   - end_time: ISO format (YYYY-MM-DDTHH:MM:SS)
+   - limit: Maximum number of logs (default: 100)
+   - format: 'json' or 'text' (default: 'json')
+
+2. View Summary:
+   ```
+   GET /api/v1/paraphrase_logs/summary?days=7
+   ```
+   Optional parameters:
+   - days: Number of days to summarize (default: 7)
+
+### Example Usage
+1. View last 50 logs in text format:
+   ```
+   GET /api/v1/paraphrase_logs?limit=50&format=text
+   ```
+
+2. View logs for a specific date range:
+   ```
+   GET /api/v1/paraphrase_logs?start_time=2025-01-01T00:00:00&end_time=2025-01-07T23:59:59
+   ```
+
+3. Get summary for last 30 days:
+   ```
+   GET /api/v1/paraphrase_logs/summary?days=30
+   ```
+
+### Next Steps
+1. Consider adding export functionality (CSV, Excel)
+2. Add log cleanup/archival mechanism
+3. Consider adding more detailed analytics
+
+## Progress
+
+## Current Task: Add Time-Based Logging Endpoint
+
+### Requirements
+- Create a new endpoint for time-based logging
+- Log format should be simple: date followed by transcribed audio
+- No paragraph formatting needed
+- Current time reference: 2025-01-08T13:53:24-08:00
+
+### Plan
+[X] Add new endpoint `/api/v1/transcribe_with_time`
+[X] Implement time-based logging functionality
+[X] Update API documentation in root endpoint
+[X] Test the new endpoint
+
+## Progress
+- Added new endpoint `/api/v1/transcribe_with_time` that includes timestamp with transcription
+- Updated API documentation in both root endpoint and 404 handler
+- Maintained consistent error handling and logging patterns
+- Added proper cleanup of temporary files
+
+## Lessons
+- When adding new endpoints, remember to update documentation in both root endpoint and 404 handler
+- Keep consistent error handling and logging patterns across similar endpoints
+- Clean up temporary files in a finally block to ensure cleanup happens even if an error occurs

@@ -1184,3 +1184,50 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 [2025-01-08 13:05:01,947] INFO in app: [Request ID: ] [20250108130501-6495a446] Starting paraphrase request
 [2025-01-08 13:05:01,948] ERROR in app: [Request ID: ] [20250108130501-6495a446] No text provided
 [2025-01-08 13:05:01,948] INFO in app: [Request ID: ] [20250108130501-6495a446] Completed paraphrase request. Duration: 0.00s, Status: 400
+[2025-01-08 13:14:53,125] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T13:14:53.125600
+[2025-01-08 13:14:53,172] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T13:14:53.171273
+[2025-01-08 13:14:53,441] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 13:14:53,483] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 13:55:22,394] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T13:55:22.394102
+[2025-01-08 13:55:23,475] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T13:55:23.475480
+[2025-01-08 13:55:33,855] ERROR in app: [Request ID: ] Unhandled exception: 405 Method Not Allowed: The method is not allowed for the requested URL.
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+[2025-01-08 13:58:51,119] INFO in app: [Request ID: ] [20250108135851-55a4078b] Starting transcribe_with_time request
+[2025-01-08 13:58:51,122] INFO in app: [Request ID: ] [20250108135851-55a4078b] File saved to D:\projects\voice_taker\VoiceNoteTaker-1\temp\temp_20250108135851-55a4078b
+[2025-01-08 13:58:51,133] ERROR in app: [Request ID: ] [20250108135851-55a4078b] Error cleaning up temporary files: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\projects\\voice_taker\\VoiceNoteTaker-1\\temp\\temp_20250108135851-55a4078b'
+[2025-01-08 13:58:51,156] ERROR in app: [Request ID: ] [20250108135851-55a4078b] Error processing audio file: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "D:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 305, in transcribe_with_time
+    audio = AudioSegment.from_file(temp_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\pydub\audio_segment.py", line 728, in from_file
+    info = mediainfo_json(orig_file, read_ahead_limit=read_ahead_limit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\pydub\utils.py", line 274, in mediainfo_json
+    res = Popen(command, stdin=stdin_parameter, stdout=PIPE, stderr=PIPE)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
+[2025-01-08 13:58:51,157] INFO in app: [Request ID: ] [20250108135851-55a4078b] Completed transcribe_with_time request. Duration: 0.04s, Status: 500
+[2025-01-08 13:59:20,779] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T13:59:20.779932
+[2025-01-08 14:11:14,396] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T14:11:14.395658

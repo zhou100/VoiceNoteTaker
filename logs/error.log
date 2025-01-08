@@ -215,3 +215,42 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 [Request ID: [Request ID: [Request ID: ] ] ] [20250108125813-a2a24044] No text provided
 [2025-01-08 13:05:01,948] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:172]:
 [Request ID: [Request ID: [Request ID: ] ] ] [20250108130501-6495a446] No text provided
+[2025-01-08 13:55:33,855] ERROR in app [in D:\projects\voice_taker\VoiceNoteTaker-1\app.py:362]:
+[Request ID: [Request ID: [Request ID: ] ] ] Unhandled exception: 405 Method Not Allowed: The method is not allowed for the requested URL.
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\routing\map.py", line 624, in match
+    raise MethodNotAllowed(valid_methods=list(e.have_match_for)) from None
+werkzeug.exceptions.MethodNotAllowed: 405 Method Not Allowed: The method is not allowed for the requested URL.
+
+[2025-01-08 13:58:51,133] ERROR in app [in D:\projects\voice_taker\VoiceNoteTaker-1\app.py:331]:
+[Request ID: [Request ID: [Request ID: ] ] ] [20250108135851-55a4078b] Error cleaning up temporary files: [WinError 32] The process cannot access the file because it is being used by another process: 'D:\\projects\\voice_taker\\VoiceNoteTaker-1\\temp\\temp_20250108135851-55a4078b'
+[2025-01-08 13:58:51,156] ERROR in app [in D:\projects\voice_taker\VoiceNoteTaker-1\app.py:334]:
+[Request ID: [Request ID: [Request ID: ] ] ] [20250108135851-55a4078b] Error processing audio file: [WinError 2] The system cannot find the file specified
+Traceback (most recent call last):
+  File "D:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 305, in transcribe_with_time
+    audio = AudioSegment.from_file(temp_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\pydub\audio_segment.py", line 728, in from_file
+    info = mediainfo_json(orig_file, read_ahead_limit=read_ahead_limit)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\pydub\utils.py", line 274, in mediainfo_json
+    res = Popen(command, stdin=stdin_parameter, stdout=PIPE, stderr=PIPE)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "C:\Python312\Lib\subprocess.py", line 1538, in _execute_child
+    hp, ht, pid, tid = _winapi.CreateProcess(executable, args,
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [WinError 2] The system cannot find the file specified
+
