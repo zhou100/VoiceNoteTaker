@@ -6,4 +6,4 @@ openai==1.3.7  # Using older version for compatibility
 pydub==0.25.1
 python-dotenv==1.0.0
 Werkzeug==3.0.1
-httpx>=0.24.1
+httpx==0.24.1
