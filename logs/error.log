@@ -80,3 +80,134 @@ Traceback (most recent call last):
     ^^^
 NameError: name 'app' is not defined
 
+[2025-01-08 00:05:51,797] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:74]:
+[Request ID: [Request ID: [Request ID: ] ] ] [20250108000551-5d9737e6] Error in paraphrase request. Duration: 0.00s
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\json\provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 61, in decorated_function
+    response = f(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 170, in get_paraphrase
+    text = request.json.get("text")
+           ^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+
+[2025-01-08 00:05:51,799] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:218]:
+[Request ID: [Request ID: [Request ID: ] ] ] Unhandled exception: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\json\provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_httpauth.py", line 174, in decorated
+    return self.ensure_sync(f)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_limiter\extension.py", line 1298, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 61, in decorated_function
+    response = f(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 170, in get_paraphrase
+    text = request.json.get("text")
+           ^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+
+[2025-01-08 00:06:24,434] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:206]:
+[Request ID: [Request ID: [Request ID: ] ] ] [20250108000624-b0938937] Error processing request: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\json\provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 174, in get_paraphrase
+    data = request.get_json()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+
+[2025-01-08 00:06:30,040] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:178]:
+[Request ID: [Request ID: [Request ID: ] ] ] [20250108000630-c6532642] No text provided

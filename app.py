@@ -92,6 +92,7 @@ def index():
     return jsonify({
         "message": "Welcome to Voice Note Taker API",
         "endpoints": {
+            "/": "API documentation",
             "/api/v1/transcribe": "POST - Upload audio file for transcription",
             "/api/v1/paraphrase": "POST - Paraphrase text"
         }
@@ -174,7 +175,7 @@ def get_paraphrase():
     try:
         app.logger.info(f"[{g.request_id}] Processing paraphrase request")
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-4o-mini",  
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that paraphrases text to make it more clear and concise while preserving the original meaning."},
                 {"role": "user", "content": f"Please paraphrase this text: {text}"}
@@ -197,6 +198,19 @@ def get_paraphrase():
 def ratelimit_handler(e):
     app.logger.warning(f"Rate limit exceeded: {e.description}")
     return jsonify({"error": f"Rate limit exceeded: {e.description}"}), 429
+
+# Error handler for 404 Not Found
+@app.errorhandler(404)
+def not_found_error(e):
+    app.logger.info(f"404 error: {request.url}")
+    return jsonify({
+        "error": "The requested URL was not found",
+        "available_endpoints": {
+            "/": "API documentation",
+            "/api/v1/transcribe": "POST - Upload audio file for transcription",
+            "/api/v1/paraphrase": "POST - Paraphrase text"
+        }
+    }), 404
 
 # Error handler for all other exceptions
 @app.errorhandler(Exception)

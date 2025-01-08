@@ -995,3 +995,158 @@ NameError: name 'app' is not defined
 [2025-01-07 23:03:20,207] INFO in logging_config: [Request ID: ] Application started at 2025-01-07T23:03:20.207008
 [2025-01-07 23:03:20,265] INFO in logging_config: [Request ID: ] Application started at 2025-01-07T23:03:20.265813
 [2025-01-07 23:03:20,272] INFO in logging_config: [Request ID: ] Application started at 2025-01-07T23:03:20.272373
+[2025-01-08 00:05:08,656] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:05:08.656954
+[2025-01-08 00:05:08,917] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:05:09,767] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:05:09.767300
+[2025-01-08 00:05:10,021] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:05:26,857] INFO in app: [Request ID: ] 404 error: http://localhost:5000/invalid
+[2025-01-08 00:05:32,709] INFO in app: [Request ID: ] [20250108000532-6bc2c20b] Starting paraphrase request
+[2025-01-08 00:05:32,710] INFO in app: [Request ID: ] [20250108000532-6bc2c20b] Processing paraphrase request
+[2025-01-08 00:05:33,358] INFO in app: [Request ID: ] [20250108000532-6bc2c20b] Successfully received paraphrase response
+[2025-01-08 00:05:33,362] INFO in app: [Request ID: ] [20250108000532-6bc2c20b] Completed paraphrase request. Duration: 0.65s, Status: 200
+[2025-01-08 00:05:51,753] INFO in app: [Request ID: ] [20250108000551-5d9737e6] Starting paraphrase request
+[2025-01-08 00:05:51,797] ERROR in app: [Request ID: ] [20250108000551-5d9737e6] Error in paraphrase request. Duration: 0.00s
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\json\provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 61, in decorated_function
+    response = f(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 170, in get_paraphrase
+    text = request.json.get("text")
+           ^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+
+[2025-01-08 00:05:51,799] ERROR in app: [Request ID: ] Unhandled exception: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\json\provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_httpauth.py", line 174, in decorated
+    return self.ensure_sync(f)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_limiter\extension.py", line 1298, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 61, in decorated_function
+    response = f(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 170, in get_paraphrase
+    text = request.json.get("text")
+           ^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+
+[2025-01-08 00:06:07,436] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:06:07.436460
+[2025-01-08 00:06:07,693] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:06:18,158] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:06:18.158462
+[2025-01-08 00:06:18,428] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:06:19,269] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:06:19.269295
+[2025-01-08 00:06:19,531] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:06:24,432] INFO in app: [Request ID: ] [20250108000624-b0938937] Starting paraphrase request
+[2025-01-08 00:06:24,434] ERROR in app: [Request ID: ] [20250108000624-b0938937] Error processing request: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 611, in get_json
+    rv = self.json_module.loads(data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\json\provider.py", line 187, in loads
+    return json.loads(s, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 174, in get_paraphrase
+    data = request.get_json()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 620, in get_json
+    rv = self.on_json_loading_failed(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\werkzeug\wrappers\request.py", line 645, in on_json_loading_failed
+    raise BadRequest(f"Failed to decode JSON object: {e}")
+werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)
+
+[2025-01-08 00:06:24,435] INFO in app: [Request ID: ] [20250108000624-b0938937] Completed paraphrase request. Duration: 0.00s, Status: 500
+[2025-01-08 00:06:30,040] INFO in app: [Request ID: ] [20250108000630-c6532642] Starting paraphrase request
+[2025-01-08 00:06:30,040] ERROR in app: [Request ID: ] [20250108000630-c6532642] No text provided
+[2025-01-08 00:06:30,040] INFO in app: [Request ID: ] [20250108000630-c6532642] Completed paraphrase request. Duration: 0.00s, Status: 400
+[2025-01-08 00:07:01,574] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:07:01.574368
+[2025-01-08 00:07:01,832] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:07:10,287] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:07:10.287730
+[2025-01-08 00:07:10,545] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:07:11,396] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:07:11.396768
+[2025-01-08 00:07:11,648] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
+[2025-01-08 00:07:24,607] INFO in logging_config: [Request ID: ] Application started at 2025-01-08T00:07:24.607329
+[2025-01-08 00:07:24,880] INFO in app: [Request ID: ] System PATH: C:\Python312\Scripts\;C:\Python312\;c:\Users\yujun\AppData\Local\Programs\cursor\resources\app\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.3\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Calibre2\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2024.3.1\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\Gi;D:\Program Files\Snowflake SnowSQL\;C:\ProgramData\chocolatey\bin;D:\Program Files\nvm;D:\Program Files\nodejs;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\yujun\AppData\Local\Microsoft\WindowsApps;C:\Users\yujun\AppData\Local\GitHubDesktop\bin;C:\Users\yujun\AppData\Local\Programs\Microsoft VS Code\bin;d:\Programs\MiKTeX\miktex\bin\x64\;C:\Users\yujun\AppData\Roaming\npm;D:\Program Files\nvm;D:\Program Files\nodejs;D:\Windsurf\bin
