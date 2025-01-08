@@ -1,0 +1,82 @@
+[2025-01-07 21:18:43,506] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:198]:
+Unhandled exception: name 'app' is not defined
+Traceback (most recent call last):
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 73, in decorated_function
+    log_api_call(endpoint_name, duration_ms, response.status_code)
+                                             ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'tuple' object has no attribute 'status_code'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_httpauth.py", line 174, in decorated
+    return self.ensure_sync(f)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_limiter\extension.py", line 1298, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 77, in decorated_function
+    log_api_call(endpoint_name, duration_ms, 500, str(e))
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\logging_config.py", line 70, in log_api_call
+    app.logger.log(level, message)
+    ^^^
+NameError: name 'app' is not defined
+
+[2025-01-07 21:23:56,619] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:202]:
+[Request ID: [Request ID: [Request ID: ] ] ] Unhandled exception: name 'current_app' is not defined
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_httpauth.py", line 174, in decorated
+    return self.ensure_sync(f)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_limiter\extension.py", line 1298, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 69, in decorated_function
+    current_app.logger.info(f"[{request_id}] Starting {endpoint_name} request")
+    ^^^^^^^^^^^
+NameError: name 'current_app' is not defined. Did you mean: 'current_dir'?
+
+[2025-01-07 21:41:11,123] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:203]:
+[Request ID: [Request ID: [Request ID: ] ] ] Unhandled exception: name 'app' is not defined
+Traceback (most recent call last):
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 76, in decorated_function
+    log_api_call(endpoint_name, duration_ms, response)
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\logging_config.py", line 91, in log_api_call
+    app.logger.log(level, message)
+    ^^^
+NameError: name 'app' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_httpauth.py", line 174, in decorated
+    return self.ensure_sync(f)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\yujun\AppData\Roaming\Python\Python312\site-packages\flask_limiter\extension.py", line 1298, in __inner
+    return cast(R, flask.current_app.ensure_sync(obj)(*a, **k))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\app.py", line 81, in decorated_function
+    log_api_call(endpoint_name, duration_ms, (error_response, 500))
+  File "d:\projects\voice_taker\VoiceNoteTaker-1\logging_config.py", line 91, in log_api_call
+    app.logger.log(level, message)
+    ^^^
+NameError: name 'app' is not defined
+

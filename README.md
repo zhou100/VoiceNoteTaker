@@ -1,31 +1,142 @@
-# Voice Note Taker
+# Voice Note Taker API
 
-# Motivation
+A Flask-based API for transcribing audio files and paraphrasing text.
 
-I often find that my writing speed is constrained by my typing abilities. One solution is to use automatic speech recognition, but it has three main disadvantages. Firstly, its accuracy can be limited. Secondly, it tends to be quite literal, requiring significant time for editing and revising. Lastly, it is difficult to go back and make changes if we change our thoughts midway. To address these issues, I developed this project using OpenAI's Whisper API for transcription, followed by the GPT-4 API to paraphrase the text in a more organized and logical manner by considering the entire content.
+## Features
 
-# Usage
+- Audio file transcription using OpenAI's Whisper API
+- Text paraphrasing using GPT-4o-mini
+- Rate limiting and authentication
+- Docker support
+- Production-ready with gunicorn
 
-To use the application, simply start the development server, open the web app in your browser, and start speaking. The application will capture your voice, transcribe it using OpenAI's Whisper API, and send the transcribed text to ChatGPT for further processing. The corrected and processed text will then be displayed on the screen.
-Configuration & Environment Setup
+## API Usage
 
-Follow these steps to set up the project environment:
+### Authentication
+
+The API uses HTTP Basic Authentication. You'll need to:
+1. Get your API credentials from your administrator
+2. Base64 encode them in the format `username:password`
+3. Add the encoded string to your Authorization header
+
+Example:
+```bash
+# Replace with your actual credentials
+echo -n "your_username:your_password" | base64
+# Add the result to your Authorization header:
+# Authorization: Basic <base64_string>
+```
+
+### Endpoints
+
+#### 1. Transcribe Audio
+Transcribes an audio file to text.
+
+**Request:**
+```bash
+curl -X POST "https://your-render-url/api/v1/transcribe" \
+  -H "Authorization: Basic <your_base64_credentials>" \
+  -F "file=@path_to_your_audio.wav"
+```
+
+**Response:**
+```json
+{
+    "text": "transcribed text here"
+}
+```
+
+#### 2. Paraphrase Text
+Paraphrases the given text.
+
+**Request:**
+```bash
+curl -X POST "https://your-render-url/api/v1/paraphrase" \
+  -H "Authorization: Basic <your_base64_credentials>" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "text to paraphrase"}'
+```
+
+**Response:**
+```json
+{
+    "original": "text to paraphrase",
+    "paraphrased": "paraphrased version of the text"
+}
+```
+
+## Rate Limits
+
+- Transcription: 10 requests per minute
+- Paraphrasing: 30 requests per minute
+- Global: 200 requests per day, 50 per hour
+
+## Error Handling
+
+The API returns appropriate HTTP status codes and error messages:
+
+```json
+{
+    "error": "Error message here"
+}
+```
+
+Common status codes:
+- 200: Success
+- 400: Bad Request
+- 401: Unauthorized
+- 429: Too Many Requests
+- 500: Internal Server Error
+
+## Local Development
 
 1. Clone the repository
-2. `cd VoiceNoteTaker`
-3. [Optional] Create a virtual environment: `python -m venv venv`
-4. [Optional] Activate the virtual environment: `venv\Scripts\activate` for Windows or `source venv/bin/activate` for Linux/Mac.
-5. Install the required dependencies: `pip install -r requirements.txt`
-6. Set up your OpenAI API key as an environment variable: `set OPENAI_API_KEY=your_api_key_here` for Windows and `export OPENAI_API_KEY=your_api_key_here` for Linux/Mac.
-7. [Optional] If you want to run it as a Telegram bot, follow [this tutorial](https://core.telegram.org/bots/tutorial) to get a bot API token, and add it to your `.bashrc` or `.zshrc` like `export TELEGRAM_BOT_TOKEN=your_token_here`.
-8. For the standalone website, run the development server: `python main.py`. Open your browser and navigate to http://localhost:5000 to access the web app. For the telegram bot, run `python telegram_bot.py`. And then talk to your registered bot to access the features.
+2. Create a `.env` file with:
+   ```
+   API_USERNAME=your_username
+   API_PASSWORD=your_password
+   OPENAI_API_KEY=your_openai_api_key
+   FLASK_ENV=development
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Run the development server:
+   ```bash
+   python app.py
+   ```
 
-⚠️ Warning
+## Deployment to Render
 
-This project is set up to use a development server, which is not suitable for production use. Please ensure that you do not deploy the application with the development server for production purposes. Instead, use a production-ready web server, such as Gunicorn or uWSGI, in conjunction with a reverse proxy like Nginx or Apache.
+1. **Fork/Clone Repository**
+   - Fork this repository to your GitHub account
+   - Or clone it and push to your own repository
 
-## Docker usage
+2. **Create Render Account**
+   - Sign up at [dashboard.render.com](https://dashboard.render.com)
+   - Connect your GitHub account
 
-One click deploy [a forked version](https://github.com/xingfanxia/VoiceNoteTaker) on Railway:
+3. **Create New Web Service**
+   - Click "New +"
+   - Select "Web Service"
+   - Choose your repository
+   - Select "Docker" as the environment
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/JINxPn?referralCode=GfxT3U)
+4. **Configure Service**
+   - Name: `voice-note-taker` (or your preferred name)
+   - Region: Choose closest to your users
+   - Branch: main (or your default branch)
+   - Plan: Free
+
+5. **Set Environment Variables**
+   Add the following environment variables in Render dashboard:
+   - `API_USERNAME`: Your chosen API username
+   - `API_PASSWORD`: Your chosen API password
+   - `OPENAI_API_KEY`: Your OpenAI API key
+   - `FLASK_ENV`: production
+
+6. **Deploy**
+   - Click "Create Web Service"
+   - Wait for the build and deployment to complete
+   - Your API will be available at the URL provided by Render
