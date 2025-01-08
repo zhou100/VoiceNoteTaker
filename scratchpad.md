@@ -29,7 +29,7 @@ Deploy voice transcription and paraphrasing service
 2. Fly.io (Good free tier)
    - Free tier with 3 shared-cpu VMs
    - Starts at $1.94/month for paid
-   - Good documentation
+   - Good documentationmak
 
 3. PythonAnywhere ($5/month)
    - Python-specific hosting
@@ -94,6 +94,30 @@ Found two issues in the logs:
 [ ] Consider adding request/response payload logging (with sensitive data redaction)
 [ ] Add structured logging for better log analysis
 [ ] Set up log rotation to manage log file sizes
+
+## Current Task: Fix File Upload Error
+
+### Problem Analysis
+Error: "no file part" when trying to upload audio file
+- This means the request doesn't contain a file field named "file"
+
+### Requirements for /api/v1/transcribe endpoint
+1. HTTP Method: POST
+2. Authentication: Basic Auth (username/password)
+3. Request Format: multipart/form-data
+4. File field name must be "file"
+
+### Example curl command:
+```bash
+curl -X POST \
+  -H "Authorization: Basic <base64_encoded_credentials>" \
+  -F "file=@/path/to/your/audio.mp3" \
+  http://your-api-url/api/v1/transcribe
+```
+
+### Lessons
+- The file field in the upload request must be named exactly "file"
+- Request must use multipart/form-data format for file uploads
 
 ## Current Task: Testing Voice API Functionality
 [X] Set up ffmpeg for audio processing

@@ -139,7 +139,7 @@ def transcribe():
                 )
                 
             app.logger.info(f"[{g.request_id}] Successfully transcribed audio")
-            return jsonify({"text": transcript.text})
+            return transcript.text + "\n\n" + "Paraphrased version will be available after calling the paraphrase endpoint."
             
         finally:
             # Clean up temporary files
@@ -185,10 +185,7 @@ def get_paraphrase():
         app.logger.info(f"[{g.request_id}] Successfully received paraphrase response")
         paraphrased = response.choices[0].message.content.strip()
         
-        return jsonify({
-            "original": text,
-            "paraphrased": paraphrased
-        })
+        return text + "\n\n" + paraphrased
     except Exception as e:
         app.logger.error(f"[{g.request_id}] Error paraphrasing text: {str(e)}\n{traceback.format_exc()}")
         return jsonify({"error": "Error paraphrasing text"}), 500
