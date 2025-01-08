@@ -93,8 +93,8 @@ def index():
         "message": "Welcome to Voice Note Taker API",
         "endpoints": {
             "/": "API documentation",
-            "/api/v1/transcribe": "POST - Upload audio file for transcription",
-            "/api/v1/paraphrase": "POST - Paraphrase text"
+            "/api/v1/transcribe": "POST - Upload audio file for transcription (returns text/plain)",
+            "/api/v1/paraphrase": "POST - Paraphrase text (returns text/plain)"
         }
     })
 
@@ -139,7 +139,7 @@ def transcribe():
                 )
                 
             app.logger.info(f"[{g.request_id}] Successfully transcribed audio")
-            return transcript.text + "\n\n" + "Paraphrased version will be available after calling the paraphrase endpoint."
+            return transcript.text + "\n\n" + "Paraphrased version will be available after calling the paraphrase endpoint.", 200, {'Content-Type': 'text/plain'}
             
         finally:
             # Clean up temporary files
@@ -185,7 +185,8 @@ def get_paraphrase():
         app.logger.info(f"[{g.request_id}] Successfully received paraphrase response")
         paraphrased = response.choices[0].message.content.strip()
         
-        return text + "\n\n" + paraphrased
+        # Return plain text with Content-Type header
+        return text + "\n\n" + paraphrased, 200, {'Content-Type': 'text/plain'}
     except Exception as e:
         app.logger.error(f"[{g.request_id}] Error paraphrasing text: {str(e)}\n{traceback.format_exc()}")
         return jsonify({"error": "Error paraphrasing text"}), 500
@@ -204,8 +205,8 @@ def not_found_error(e):
         "error": "The requested URL was not found",
         "available_endpoints": {
             "/": "API documentation",
-            "/api/v1/transcribe": "POST - Upload audio file for transcription",
-            "/api/v1/paraphrase": "POST - Paraphrase text"
+            "/api/v1/transcribe": "POST - Upload audio file for transcription (returns text/plain)",
+            "/api/v1/paraphrase": "POST - Paraphrase text (returns text/plain)"
         }
     }), 404
 

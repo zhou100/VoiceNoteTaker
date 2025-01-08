@@ -211,3 +211,7 @@ werkzeug.exceptions.BadRequest: 400 Bad Request: Failed to decode JSON object: E
 
 [2025-01-08 00:06:30,040] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:178]:
 [Request ID: [Request ID: [Request ID: ] ] ] [20250108000630-c6532642] No text provided
+[2025-01-08 12:58:13,646] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:172]:
+[Request ID: [Request ID: [Request ID: ] ] ] [20250108125813-a2a24044] No text provided
+[2025-01-08 13:05:01,948] ERROR in app [in d:\projects\voice_taker\VoiceNoteTaker-1\app.py:172]:
+[Request ID: [Request ID: [Request ID: ] ] ] [20250108130501-6495a446] No text provided
