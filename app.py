@@ -29,10 +29,7 @@ setup_logging(app)
 
 # Configure OpenAI client
 client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY"),
-    http_client=None,
-    proxies=None,
-    transport=None
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 if not client.api_key or client.api_key == "your_openai_api_key":
